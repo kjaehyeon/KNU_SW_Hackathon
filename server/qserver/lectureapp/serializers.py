@@ -5,20 +5,20 @@ from .models import LectureFile, Grade, Semester, Subject
 class GradeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grade
-        fields = ['id', 'name', 'slug', 'lecturefiles']
+        fields = ['id', 'name', 'lecturefiles']
 
 class SemesterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Semester
-        fields = ['id', 'name', 'slug']
+        fields = ['id', 'name']
 
 class SubjectSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model=Subject
-        fields = ['id', 'name', 'slug', 'owner', 'grade', 'semester']
+        fields = ['id', 'name', 'owner', 'grade', 'semester']
 
 class UserSerializer(serializers.ModelSerializer):
     lecturefiles = serializers.PrimaryKeyRelatedField(many=True, queryset=LectureFile.objects.all())
