@@ -1,2 +1,6 @@
 /server/qserver/db.sqlite3
+<<<<<<< HEAD
 /server/qserver/urlapp/migrations
+=======
+/server/qserver/lectureapp/migrations
+>>>>>>> 96566704913d9ea61b9a3de620c7a870b7a755a5
