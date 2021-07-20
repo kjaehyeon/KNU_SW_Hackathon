@@ -1,2 +1,3 @@
 /server/qserver/db.sqlite3
 /server/qserver/lectureapp/migrations
+/server/qserver/lectureapp/__pycache__
