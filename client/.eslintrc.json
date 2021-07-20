@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "react-app",
+        "google"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "camelcase": "off",
+        "new-cap": "off",
+        "require-jsdoc": "off",
+        "max-len": [
+            "error",
+            90
+        ],
+        "react-hooks/exhaustive-deps": "off",
+        "linebreak-style": "off"
+    }
+}
