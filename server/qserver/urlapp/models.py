@@ -9,6 +9,7 @@ class Folder(models.Model):
         return self.name
 
 class Url(models.Model):
+    folder = models.ForeignKey(Folder, default =None ,on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     body = models.TextField()
     img = models.ImageField()

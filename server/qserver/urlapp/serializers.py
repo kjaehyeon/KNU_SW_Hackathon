@@ -5,7 +5,7 @@ from .models import Url, Folder
 class UrlSerializer(serializers.ModelSerializer):
     class Meta:
         model = Url
-        fields = ('title', 'body', 'img', 'link', 'created_at', 'updated_at')
+        fields = ('folder', 'title', 'body', 'img', 'link', 'created_at', 'updated_at')
 
 #class UrlListSerializer(serializers.ListSerializer):
 class FolderSerializer(serializers.ModelSerializer):

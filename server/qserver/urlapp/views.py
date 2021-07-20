@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework.decorators import api_views
+#from rest_framework.decorators import api_views
 from .models import Url, Folder
 from .serializers import FolderSerializer, UrlSerializer
 # Create your views here.
@@ -23,7 +23,7 @@ class UrlViewSet(viewsets.ModelViewSet):
     queryset = Url.objects.all()
     serializer_class = UrlSerializer
 
-@api_view(['GET']) # 해당 함수 view에서 처리할 http 메소드
-def ClipAPI(request):
-    #user = 
-    return Response("hello world!") # http response 형태로 return
+# @api_view(['GET']) # 해당 함수 view에서 처리할 http 메소드
+# def ClipAPI(request):
+#     #user = 
+#     return Response("hello world!") # http response 형태로 return
