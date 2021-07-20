@@ -4,8 +4,8 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('folder', views.FolderViewSet)
-router.register('url', views.UrlViewSet)
+router.register('cliplist', views.FolderViewSet, basename="Folder")
+router.register('clip', views.UrlViewSet, basename="url")
 
 urlpatterns = [
     #path("clip/", views.ClipAPI),

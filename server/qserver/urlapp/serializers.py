@@ -9,6 +9,6 @@ class UrlSerializer(serializers.ModelSerializer):
 
 #class UrlListSerializer(serializers.ListSerializer):
 class FolderSerializer(serializers.ModelSerializer):
-    class MEta:
+    class Meta:
         model = Folder
         fields = ('name', 'user')
