@@ -1,7 +1,10 @@
 /server/qserver/db.sqlite3
-<<<<<<< HEAD
-/server/qserver/urlapp/migrations
-=======
 /server/qserver/lectureapp/migrations
+/server/qserver/lectureapp/__pycache__
+/server/qserver/urlapp/migrations
+/server/qserver/lectureapp/migrations
+<<<<<<< HEAD
 >>>>>>> 96566704913d9ea61b9a3de620c7a870b7a755a5
 /server/qserver/qserver/__pycache__
+=======
+>>>>>>> 06ff38cb0392ff827ad31df6b6954598edc6ee27
