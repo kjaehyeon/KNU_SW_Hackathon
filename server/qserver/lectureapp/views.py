@@ -10,8 +10,12 @@ class FileList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericA
     #queryset = LectureFile.objects.all()
     serializer_class = LectureFileSerializer
     def get_queryset(self):
+        grade = self.request.GET['grade']
+        semester = self.request.GET['semester']
+        subject = self.request.GET['subject']
         user=self.request.user
-        return LectureFile.objects.filter(owner=user)
+        
+        return LectureFile.objects.filter(owner__username=user, subject__name=subject, grade__name=grade, semester__name=semester)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -21,3 +25,13 @@ class FileList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericA
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+
+class FileDetail(mixins.DestroyModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+    
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+    
