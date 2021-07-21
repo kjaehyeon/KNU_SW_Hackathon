@@ -15,6 +15,10 @@
         background: $POINT_COLOR;
         transition: 0.4s;
       }
+
+      .file{
+        cursor: pointer;
+      }
     }
 
     .items-wrapper{
