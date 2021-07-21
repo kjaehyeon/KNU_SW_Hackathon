@@ -1,4 +1,7 @@
+/*eslint-disable*/
 import React from 'react';
+import { useState } from 'react';
+
 import Nav from 'Components/Nav';
 import Card from 'Components/Card';
 
@@ -9,6 +12,8 @@ import {FiLogOut} from 'react-icons/fi';
 import './style.scss';
 
 function Home() {
+  const [file_list, setFileList] = useState([]);
+
   return (
     <div className='home__container'>
       <div className='aside'>
@@ -30,8 +35,6 @@ function Home() {
           </div>
         </div>
         <div className='main'>
-          <Card/>
-          <Card/>
           <Card/>
           <Card/>
           <Card/>
