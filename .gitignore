@@ -3,4 +3,5 @@
 /server/qserver/lectureapp/__pycache__
 /server/qserver/urlapp/migrations
 /server/qserver/lectureapp/migrations
+/server/qserver/media
 /server/qserver/qserver/__pycache__

@@ -1,0 +1,40 @@
+@import 'Configs/colors.scss';
+
+.nav{
+  font-size: 17px;
+  font-weight: 600;
+  .root{
+    .wrapper{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.4s;
+      height: 30px;
+      
+      &:hover{
+        background: $POINT_COLOR;
+        transition: 0.4s;
+      }
+    }
+
+    .items-wrapper{
+      height: 0;
+      overflow: hidden;
+      transition: 0.5s;
+      
+      .items{
+        display: flex;
+        align-items: center;
+        height: 30px;
+      }
+    }
+  }
+
+  .icon{
+    margin-right: 5px;
+    
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
