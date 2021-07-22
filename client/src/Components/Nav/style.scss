@@ -19,6 +19,12 @@
       .file{
         cursor: pointer;
       }
+
+      .file-input{
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+      }
     }
 
     .items-wrapper{
