@@ -1,5 +1,9 @@
 .Signin{
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
     .inner{
         width: 500px;
         height: 600px;
@@ -58,6 +62,8 @@
                 outline: none;
                 color: white;
                 border-radius: 20px;
+                transition: 0.2s;
+
                 &:hover{
                     background: #42a5f5;
                     color:rgb(248, 237, 237);
