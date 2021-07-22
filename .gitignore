@@ -1,0 +1,12 @@
+/server/qserver/db.sqlite3
+/server/qserver/lectureapp/migrations
+/server/qserver/lectureapp/__pycache__
+/server/qserver/urlapp/migrations
+/server/qserver/lectureapp/migrations
+/server/qserver/media
+/server/qserver/qserver/__pycache__
+/server/qserver/urlapp/__pycache__
+/server/qserver/certi/__pycache__
+/server/qserver/s2v_old
+/server/myvenv
+/server/.idea
