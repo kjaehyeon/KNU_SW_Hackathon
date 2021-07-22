@@ -2,7 +2,8 @@
 
 ---
 
-https://www.notion.so/taewon98/2021-KNU-HACKERTHON-baf70bf38895494e956be60ad7417695#3c458a406b724c0ba758f977d780261e
+![logo](https://www.notion.so/taewon98/2021-KNU-HACKERTHON-baf70bf38895494e956be60ad7417695#3c458a406b724c0ba758f977d780261e
+)
 
 ## 1. 주제
 
