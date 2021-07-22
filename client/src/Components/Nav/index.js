@@ -25,8 +25,6 @@ function Nav(props) {
   } = props;
   
   const [folder_state, setFolderState] = useState([]);
-  //const [url_folder_list, setUrlFolderList] = useState([]);
-  //const [lecture_folder_list, setLectureFolderList] = useState(List([]));
   const [wrong_folder_list, setWrongFolderList] = useState(List([]));
   const history = useHistory();
 
@@ -289,7 +287,6 @@ function Nav(props) {
           setUrlFolderList(prev => prev.filter((folder, idx)=>{
             return idx !== index;
           }));
-          setUpdate(prev => !prev);
         }catch(err){
           console.log(err);
           error = true;
@@ -329,10 +326,11 @@ function Nav(props) {
         method: 'post',
         url: ADD_URL_FILE,
         data: {
-          folder: 'pk',
-          url,
+          folder: folder.id,
+          link: url,
         },
       });
+      location.reload();
     }catch(err){
       console.log(err);
     }
@@ -393,7 +391,7 @@ function Nav(props) {
                   </div>
                   <div>
                     <RiDeleteBin5Line className='icon' onClick={()=>deleteFolder(URL, 1, i, folder.id)}/>
-                    <RiFileUploadLine className='icon' onClick={()=>addUrlFile(folder.name)}/>
+                    <RiFileUploadLine className='icon' onClick={()=>addUrlFile(folder)}/>
                   </div>
                 </li>
               );
