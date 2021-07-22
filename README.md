@@ -6,7 +6,7 @@
 
 ## 1. 주제
 
----
+
 
 - **서비스 한 줄 요약 : 대학생을 위한 Personal Library & AUTO QUIZ MAKE 서비스**
 - **Slogan : Ask yourself!**
@@ -20,7 +20,7 @@
 
 ## 2. Team Name : Queen's Gambit & 팀원
 
----
+
 
 - **클라이언트 (React)**
     - 강준구 (경북대학교 컴퓨터학부)
