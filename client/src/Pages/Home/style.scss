@@ -15,8 +15,8 @@
 
             .logo{
                 font-size: 36px;
-                margin-bottom: 50px;
-                margin-left: 10px;
+                margin-bottom: 10px;
+                cursor: pointer;
 
                 .icon{
                     position: relative;
@@ -37,7 +37,7 @@
             height: 100px;
             justify-content: flex-end;
             align-items: center;
-            font-size: 26px;
+            font-size: 22px;
             margin-bottom: 30px;
 
             .user-id{
@@ -69,6 +69,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            .loader {
+                height: 50vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .not {
+                font-size: 54px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 70%;
+                height: 50vh;
+
+                .icon {
+                    position: relative;
+                    top: -3px;
+                    margin-right: 10px;
+                }
+            }
         }
     }
 }
