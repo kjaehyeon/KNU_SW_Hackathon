@@ -1,9 +1,11 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 
 import Nav from 'Components/Nav';
 import Card from 'Components/Card';
+import { GET_FOLDER_LIST, GET_LECTURE_FOLDER_LIST, GET_URL_FOLDER_LIST } from 'Configs/api';
 
 import {BsQuestionCircleFill} from 'react-icons/bs';
 import {FaRegUser} from 'react-icons/fa';
@@ -12,7 +14,37 @@ import {FiLogOut} from 'react-icons/fi';
 import './style.scss';
 
 function Home() {
-  const [file_list, setFileList] = useState([]);
+  const [update, setUpdate] = useState(true);
+  const [url_folder_list, setUrlFolderList] = useState([]);
+  const [lecture_folder_list, setLectureFolderList] = useState([]);
+
+  const path = location.pathname.slice(1);
+  const user_id = localStorage.getItem('username');
+
+  useEffect (()=>{
+    axios({
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${document.cookie.split('=')[1]}`
+      },
+      method: 'get',
+      url: GET_URL_FOLDER_LIST,
+    }).then((res)=>{
+      setUrlFolderList(res.data);
+    });
+
+    axios({
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${document.cookie.split('=')[1]}`
+      },
+      method: 'get',
+      url: GET_LECTURE_FOLDER_LIST,
+    }).then((res)=>{
+      console.log(res.data);
+      setLectureFolderList(res.data);
+    })
+  }, []);
 
   return (
     <div className='home__container'>
@@ -22,13 +54,19 @@ function Home() {
             <BsQuestionCircleFill className='icon'/>
             Query
           </div>
-          <Nav/>
+          <Nav
+            url_folder_list={url_folder_list}
+            setUrlFolderList={setUrlFolderList}
+            lecture_folder_list={lecture_folder_list}
+            setLectureFolderList={setLectureFolderList}
+            setUpdate={setUpdate}
+          />
         </div>
       </div>
       <div className='body'>
         <div className='user'>
           <FaRegUser className='icon'/>
-          사용자
+          <span className='user-id'>{user_id}</span>님
           <div className='logout'>
             <FiLogOut className='icon'/>
             로그아웃
