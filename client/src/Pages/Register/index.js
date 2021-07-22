@@ -10,7 +10,6 @@ import { useHistory } from 'react-router-dom';
 import './style.scss';
 const Register = () => {
   const history = useHistory();
-  const [cookies, setCookie] = useCookies(['token']);
   const [input, handleInput] = useInput({
     id: '',
     email: '',
@@ -26,7 +25,7 @@ const Register = () => {
   const register = async (e) => {
     e.preventDefault();
     try{
-    const response = await axios({
+    await axios({
       headers: {
         'Content-Type': 'application/json'
       },
@@ -39,23 +38,9 @@ const Register = () => {
       },
     });
 
-    const {data: {token}} = response;
-    const {data: {user: {username}}} = response;
-
-    if(token){
-      const expires = new Date();
-      expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 14)
-
-      setCookie('token', token, {path: '/', expires});
-
-      if(username){
-        localStorage.setItem('username', username);
-      }
-    }
-
     history.push('/');
     }catch(err){
-      console.log(err);
+      alert('회원가입 실패');
     }
   }
 
