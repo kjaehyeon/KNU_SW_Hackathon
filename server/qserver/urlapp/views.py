@@ -79,26 +79,11 @@ class UrlViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         print(self.request.data["link"])
         page = metadata_parser.MetadataParser(self.request.data["link"])
-        """
-        item_image_url = page.get_metadatas("image", strategy=['og'])[0]
-        print(item_image_url)
-        temp_file = download(item_image_url)
-        file_name = '{urlparse}.{ext}'.format(
-            # url의 마지막 '/' 내용 중 확장자 제거
-            # ex) url = 'https://~~~~~~/bag-1623898_960_720.jpg'
-            #     -> 'bag-1623898_960_720.jpg'
-            #     -> 'bag-1623898_960_720'
-            urlparse=urlparse(item_image_url).path.split('/')[-1].split('.')[0],
-            ext=get_buffer_ext(temp_file)
-        )
-        #self.img.save(file_name, File(temp_file))  
-        #Url.img.save(file_name, File(temp_file))
-        """
         serializer.save(
             user=self.request.user, 
             title=page.get_metadatas("title", strategy=['og'])[0],
             body=page.get_metadatas("description", strategy=['og'])[0],
-            image_url=page.get_metadatas("image", strategy=['og'])[0]
+            image_url=page.get_metadatas("image", strategy=['og'])[0],
         )
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
