@@ -3,7 +3,7 @@ import Register from 'Pages/Register';
 import Signin from 'Pages/Signin';
 import _404 from 'Pages/_404';
 
-const SIGNIN = '/signin';
+const SIGNIN = '/';
 const REGISTER = '/register';
 const HOME = '/:file';
 
