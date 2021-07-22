@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 # User Serializer
-# 유저(사용자) 시리얼라이저는 간단하기도하고 Delete serializer와도 매우 유사합니다.
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
