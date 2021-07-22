@@ -8,13 +8,14 @@ import axios from 'axios';
 import {FiLink} from 'react-icons/fi';
 import {FcFolder} from 'react-icons/fc';
 import {BsChevronDown} from 'react-icons/bs';
-import {AiFillFolderAdd} from 'react-icons/ai';
+import {AiFillFolderAdd, AiOutlineConsoleSql} from 'react-icons/ai';
 import {FaBook} from 'react-icons/fa';
 import {CgNotes} from 'react-icons/cg';
 import {RiDeleteBin5Line, RiFileUploadLine} from 'react-icons/ri';
 
 import './style.scss';
 import { ADD_LECTURE_FILE, ADD_LECTURE_FOLDER, ADD_URL_FILE, ADD_URL_FOLDER } from 'Configs/api';
+import Loader from 'react-loader-spinner';
 
 function Nav(props) {
   const {
@@ -22,8 +23,9 @@ function Nav(props) {
     setUrlFolderList,
     lecture_folder_list,
     setLectureFolderList,
+    setLoading,
   } = props;
-  
+
   const [folder_state, setFolderState] = useState([]);
   const [wrong_folder_list, setWrongFolderList] = useState(List([]));
   const history = useHistory();
@@ -56,31 +58,31 @@ function Nav(props) {
     })
 
     if(!folder_state[id]){
-      element.style.height = `${count*30}px`;
+      element.style.height = `${count*40}px`;
       if(id >= 4){
         const e = document.getElementById('pair-2');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height + count*30}px`;
+        e.style.height = `${height + count*40}px`;
       }
       if(id >= 8 && id <=9){
         const e = document.getElementById('pair-4');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height + count*30}px`;
+        e.style.height = `${height + count*40}px`;
       } 
       else if(id >= 10 && id <=11){
         const e = document.getElementById('pair-5');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height + count*30}px`;
+        e.style.height = `${height + count*40}px`;
       } 
       else if(id >= 12 && id <=13){
         const e = document.getElementById('pair-6');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height + count*30}px`;
+        e.style.height = `${height + count*40}px`;
       } 
       else if(id >= 14 && id <=15){
         const e = document.getElementById('pair-7');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height + count*30}px`;
+        e.style.height = `${height + count*40}px`;
       } 
     } else{
       element.style.height = '0';
@@ -142,27 +144,27 @@ function Nav(props) {
       if(id >= 4){
         const e = document.getElementById('pair-2');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height - count*30}px`;
+        e.style.height = `${height - count*40}px`;
       }
       if(id >= 8 && id <= 9){
         const e = document.getElementById('pair-4');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height - count*30}px`;
+        e.style.height = `${height - count*40}px`;
       }
       if(id >= 10 && id <= 11){
         const e = document.getElementById('pair-5');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height - count*30}px`;
+        e.style.height = `${height - count*40}px`;
       }
       if(id >= 12 && id <= 13){
         const e = document.getElementById('pair-6');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height - count*30}px`;
+        e.style.height = `${height - count*40}px`;
       }
       if(id >= 14 && id <= 15){
         const e = document.getElementById('pair-7');
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height - count*30}px`;
+        e.style.height = `${height - count*40}px`;
       }
     }
 
@@ -185,9 +187,9 @@ function Nav(props) {
     });
 
     if(type === ADD){
-      element.style.height = `${(count)*30}px`;
+      element.style.height = `${(count)*40}px`;
     } else{
-      element.style.height = `${(count - 1)*30}px`;
+      element.style.height = `${(count - 1)*40}px`;
     }
 
     const temp =  !folder_state[id] ? count : 1;
@@ -263,7 +265,7 @@ function Nav(props) {
       parentId.forEach((id)=>{
         const e = document.getElementById(`pair-${id}`);
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height + (count)*30}px`;
+        e.style.height = `${height + (count)*40}px`;
       })
     }
   }
@@ -293,7 +295,6 @@ function Nav(props) {
         }
         break;
       case LECTURE_MATERIAL:
-        setLectureFolderList(prev => prev.delete(index));
         break;
       case WRONG_NOTE:
         break;
@@ -307,7 +308,7 @@ function Nav(props) {
       parentId.forEach((id)=>{
         const e = document.getElementById(`pair-${id}`);
         const height = Number(e.style.height.replace('px', ''));
-        e.style.height = `${height - 30}px`;
+        e.style.height = `${height - 40}px`;
       })
     }
   }
@@ -330,35 +331,57 @@ function Nav(props) {
           link: url,
         },
       });
-      location.reload();
+      const [type, name] = location.pathname.slice(1).split('-');
+
+      if(type === 'url' && decodeURI(name) === folder.name){
+        location.reload();
+      } else{
+        history.push(`/url-${folder.name}`);
+      }
     }catch(err){
       console.log(err);
     }
   }
 
   const addLectureFile = async (e) => {
+    setLoading(true);
     const selected_file = e.target.files[0];
     const form_data = new FormData();
     const [grade, semester, subject] = e.target.getAttribute('path').split('-');
+    const folder_id = e.target.getAttribute('folder_id');
     
-    form_data.append('grade', grade);
-    form_data.append('semester', semester);
-    form_data.append('subject', subject);
+    form_data.append('name', selected_file.name);
+    form_data.append('grade', Number(grade));
+    form_data.append('semester', Number(semester));
+    form_data.append('subject', Number(folder_id));
     form_data.append('file_data', selected_file);
     form_data.append('enctype', 'multipart/form-data');
 
-    /*try{
+    try{
       await axios({
         method: 'post',
         url: ADD_LECTURE_FILE,
         data: form_data,
         headers: {
+          'Authorization': `Token ${document.cookie.split('=')[1]}`,
           'Content-Type': 'multipart/form-data'
         }
-      })
+      });
+
+      setLoading(false);
+
+      const [type, tgrade, tsemester, tsubject] = location.pathname.slice(1).split('-');
+      
+      if(type === 'lecture' && tgrade === grade && tsemester === semester &&
+        decodeURI(tsubject) === subject){
+        location.reload();
+      } else{
+        history.push(`/lecture-${grade}-${semester}-${subject}`);
+      }
     }catch(err){
       console.log(err);
-    }*/
+      setLoading(false);
+    }
   }
 
   const showFiles = (path) => {
@@ -443,16 +466,21 @@ function Nav(props) {
                             }
                           </div>
                           <div>
-                            <RiDeleteBin5Line className='icon' onClick={()=>deleteFolder(LECTURE_MATERIAL, 8, i, folder.id, [4, 2])}/>
-                            <label htmlFor={`lecture-file-${i}`}>
-                              <RiFileUploadLine className='icon'/>
-                            </label>
+                            <>
+                              <RiDeleteBin5Line
+                                className='icon'
+                                onClick={()=>deleteFolder(LECTURE_MATERIAL, 8, i, folder.id, [4, 2])}/>
+                              <label htmlFor={`lecture-file-${i}`}>
+                                <RiFileUploadLine className='icon'/>
+                              </label>
+                            </>
                             <input
                               id={`lecture-file-${i}`}
-                              path={`1-1-${folder.name}`}
                               className='file-input'
                               type='file'
                               accept='application/pdf'
+                              path={`1-1-${folder.name}`}
+                              folder_id={folder.id}
                               onChange={addLectureFile}  
                             />
                           </div>
@@ -494,6 +522,9 @@ function Nav(props) {
                               className='file-input'
                               type='file'
                               accept='application/pdf'
+                              path={`1-1-${folder.name}`}
+                              folder_id={folder.id}
+                              onChange={addLectureFile}
                             />
                           </div>
                         </li>
@@ -544,7 +575,11 @@ function Nav(props) {
                               id={`lecture-file-${i}`}
                               className='file-input'
                               type='file'
-                              accept='application/pdf'/>
+                              accept='application/pdf'
+                              path={`2-1-${folder.name}`}
+                              folder_id={folder.id}
+                              onChange={addLectureFile}
+                            />
                           </div>
                         </li>
                       );
@@ -579,7 +614,15 @@ function Nav(props) {
                             <label htmlFor={`lecture-file-${i}`}>
                               <RiFileUploadLine className='icon'/>
                             </label>
-                            <input id={`lecture-file-${i}`} className='file-input' type='file' accept='application/pdf'/>
+                            <input
+                              id={`lecture-file-${i}`}
+                              className='file-input'
+                              type='file'
+                              accept='application/pdf'
+                              path={`2-2-${folder.name}`}
+                              folder_id={folder.id}
+                              onChange={addLectureFile}
+                            />
                           </div>
                         </li>
                       );
@@ -629,7 +672,11 @@ function Nav(props) {
                               id={`lecture-file-${i}`}
                               className='file-input'
                               type='file'
-                              accept='application/pdf'/>
+                              accept='application/pdf'
+                              path={`3-1-${folder.name}`}
+                              folder_id={folder.id}
+                              onChange={addLectureFile}
+                            />
                           </div>
                         </li>
                       );
@@ -664,7 +711,15 @@ function Nav(props) {
                             <label htmlFor={`lecture-file-${i}`}>
                               <RiFileUploadLine className='icon'/>
                             </label>
-                            <input id={`lecture-file-${i}`} className='file-input' type='file' accept='application/pdf'/>
+                            <input
+                              id={`lecture-file-${i}`}
+                              className='file-input'
+                              type='file'
+                              accept='application/pdf'
+                              path={`3-2-${folder.name}`}
+                              folder_id={folder.id}
+                              onChange={addLectureFile}
+                            />
                           </div>
                         </li>
                       );
@@ -714,7 +769,11 @@ function Nav(props) {
                               id={`lecture-file-${i}`}
                               className='file-input'
                               type='file'
-                              accept='application/pdf'/>
+                              accept='application/pdf'
+                              path={`4-1-${folder.name}`}
+                              folder_id={folder.id}
+                              onChange={addLectureFile}
+                            />
                           </div>
                         </li>
                       );
@@ -753,7 +812,11 @@ function Nav(props) {
                               id={`lecture-file-${i}`}
                               className='file-input'
                               type='file'
-                              accept='application/pdf'/>
+                              accept='application/pdf'
+                              path={`4-2-${folder.name}`}
+                              folder_id={folder.id}
+                              onChange={addLectureFile}
+                            />
                           </div>
                         </li>
                       );
