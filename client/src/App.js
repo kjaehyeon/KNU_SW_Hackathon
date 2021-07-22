@@ -2,7 +2,6 @@
 import { routes } from 'Configs/routes';
 import Auth from 'Hoc';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
 
 import './App.scss';
 
