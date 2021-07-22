@@ -12,14 +12,25 @@ function Card(props) {
     type,
     title,
     summary,
-    img
+    img,
+    link
   } = props;
+
+  const goLink = () => {
+    open(link);
+  }
 
   return (
     <div className='card'>
       <div className='header'>
         {
-          type === 'url' ? <GoLink size='28' className='icon' className='icon'/> :
+          type === 'url' ? 
+          <GoLink 
+            size='28'
+            className='icon'
+            className='icon'
+            onClick={goLink}
+          /> :
           <>
             <BsDownload size='28' title='download' className='icon'/>
             <BsQuestionDiamond size='28' title='quiz' className='icon'/>
