@@ -54,7 +54,7 @@
 
 ## 3. 서비스 Description
 
----
+
 
 ### **Service Name : Query**
 
@@ -112,7 +112,7 @@
 
 ## Tech Stack
 
----
+
 
 - Django 3.2.5 version
 - Django Rest Framework 3.12.4 version
@@ -120,7 +120,7 @@
 
 ## 향후 계획(Development)
 
----
+
 
 ### 1. 질문 공유 기능
 
@@ -128,7 +128,7 @@
 
 ## Get started
 
----
+
 
 ### I**nstallation & Run**
 
