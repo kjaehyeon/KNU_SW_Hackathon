@@ -60,7 +60,7 @@
 
 ### **Service Name : Query**
 
-![home_image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/435948c2-767b-44fa-b35a-d43a8cc5f012/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203239Z&X-Amz-Expires=86400&X-Amz-Signature=ec235e52e9dedfdcf98732aa8cc2a8f4f994448217ba7a4af83b0ce4b9710c69&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![home_image](https://user-images.githubusercontent.com/33050476/126733469-f5608718-b9d9-450a-9ddd-bc79b5b178f1.png)
 
 ## :stuck_out_tongue_closed_eyes: [API 명세서](https://www.notion.so/API-08fe6e9aa2714e8085eb016c09e0db73)
 
