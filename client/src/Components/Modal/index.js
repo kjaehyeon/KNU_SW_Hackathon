@@ -15,7 +15,7 @@ function Modal(props) {
     quiz_list,
   } = props;
 
-  const subject = window.location.pathname.split('-')[3];
+  const subject = decodeURI(window.location.pathname.split('-')[3]);
   const [test_state, setTestState] = useState(true);
   const [inputs, setInputs] = useState([]);
   const handleChange = (e) => {
