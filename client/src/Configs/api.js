@@ -16,5 +16,5 @@ export const GET_WRONG_FOLDER_LIST = '/lecture/wrongsubject/';
 export const GET_WRONG_FILE_LIST = '/lecture/wrong/';
 export const LOGOUT = '/certi/logout';
 export const QUIZ = '/lecture/quiz/';
-export const MAKE_WRONG = '/lecture/wrong';
+export const MAKE_WRONG = '/lecture/wrong/';
 
