@@ -56,7 +56,6 @@
 ## 3. 서비스 Description
 
 
-
 ### **Service Name : Query**
 
 ![home_image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/435948c2-767b-44fa-b35a-d43a8cc5f012/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203239Z&X-Amz-Expires=86400&X-Amz-Signature=ec235e52e9dedfdcf98732aa8cc2a8f4f994448217ba7a4af83b0ce4b9710c69&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
@@ -66,7 +65,9 @@
 - **강의자료 저장 및 관리**
     - 사용자가 업로드한 강의자료를 저장하고 관리하는 기능입니다.
     - 학년/학기/과목 별로 구별되어 있어 자료를 효율적으로 관리할 수 있습니다.
+
 - **퀴즈 생성 & 퀴즈 풀기**
+    - 단순히 강의자료를 달달 암기하는 것보다 암기할 내용으로 퀴즈를 만들고 풀어보는 것이 머리에 더 잘들어 온다는 것은 학생이라면 누구나 알고있습니다. 하지만 퀴즈를 직접 만들어서 푸는데 걸리는 시간은 만만치 않아서 쉽게 하기 힙듭니다. 이때 Query를 사용한다면 이 시간을 획기적으로 줄일 수 있습니다.
     - 라이브러리
         - Qestgen.ai : https://github.com/ramsrigouthamg/Questgen.ai
         - PyPDF2 : https://github.com/mstamy2/PyPDF2
@@ -80,10 +81,11 @@
     ```
 
 - **오답노트**
-    - 퀴즈를 풀고 틀린 문제가 있다면 자동으로 오답노트에 기록되어 언제든 다시 풀어볼 수 있습니다.
-    - 오답노트를 잘 활용하고 분석한다면 본인의 약점을 충분히 보완할 수 있습니다.
+    - 강의 자료로 부터 생성된 퀴즈를 풀고 틀린 문제들은 자동으로 오답노트에 기록되어 언제든 다시 풀어볼 수 있습니다.
+    - 오답노트를 잘 활용하고 분석한다면 본인의 약점을 보완하고 효율적으로 학습할 수 있을 것입니다.
  
 - **URL 저장 및 관리**
+    - 학생이라면 인터넷에서 유익한 자료나 정보를 담은 글을 발견하고 나중에 다시 봐야지 하며 즐겨찾기나 링크를 저장해두었다가 그런 링크를 저장해두었다는 사실조차 잊어버리고 그때 그 자료를 찾아 해메었던 기억이 있으실 겁니다. 이런 상황을 해결하고자 구현한 기능입니다.
     - 좌측 Link Keeper 클릭 시 생성 된 폴더를 볼 수 있습니다
     - Link Keeper 우측 폴더 생성 아이콘을 누르면 폴더를 추가 생성할 수 있습니다.
         - 사용자가 POST한 폴더이름을 서버에서 저장합니다.
@@ -125,7 +127,6 @@
 - React 17.0.2 version
 
 ## 향후 계획(Development)
-
 
 
 ### 1. 질문 공유 기능
