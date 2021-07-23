@@ -8,21 +8,22 @@
 
 
 
-- **서비스 한 줄 요약 : 대학생을 위한 Personal Library & AUTO QUIZ MAKE 서비스**
+- **서비스 한 줄 요약 : 대학생을 위한 Personal Library & QUIZ MAKEING 서비스**
 - **Slogan : Ask yourself!**
 - 문제점 및 개발배경
-    1. 대학생 전공, 교양 등 공부를 위해 직접 문제를 만들기에 시간투자가 너무 많이 필요하다
-    2. 대학생들이 전공 및 기타 공부관련 URL 정리를 위한 툴이 부족하다
-    3. 각 학기별 강의자료 정리를 용이하게 하기 어렵다
+    1. 코로나로 인한 비대면 강의로 학습의 떨어지는 학습의 효율성을 보조하기 위한 Tool의 필요성이 큽니다.
+    2. 학생들은 학습을 위해 직접 문제를 만드는 데 많은 시간을 투자해야 합니다.
+    3. 학생들이 전공 및 기타 공부관련해 필요한 정보를 스크랩 해두는 URL 정리를 위한 툴이 부족합니다.
+    4. 학년/학기별 강의자료를 저장하고 정리하기 위한 도구가 필요합니다.
 - 해결책
-    - 대학생들의 강의자료를 **자동으로 퀴즈**로 만들어주는 서비스
-    - 대학생들의 **강의자료 정리**와 **각종 URL을 한 번에 정리** 하기 위한 서비스
+    - AI가 **자동으로 퀴즈**를 만들어주는 서비스
+    - 대학생들의 **강의자료와 각종 URL을 한 번에 보기 쉽게 정리** 하기 위한 서비스
 
 ## 2. Team Name : Queen's Gambit & 팀원
 
 
 
-- **클라이언트 (React)**
+- **프론트엔드 (React)**
     - 강준구 (경북대학교 컴퓨터학부)
 
         Github : [https://github.com/Jungu12](https://github.com/Jungu12)
@@ -37,7 +38,7 @@
 
 ![react_image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/86a672de-ce28-4407-921a-5c26e2ed905f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203122Z&X-Amz-Expires=86400&X-Amz-Signature=b553e4c7cdf0a62b1a32373be2c902c34dfdea057384e36761ee3db1cdd6d2b3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-- **서버 (Django Rest Framework)**
+- **백엔드 (Django Rest Framework)**
     - 김재현 (경북대학교 컴퓨터학부)
 
         Github : [https://github.com/kjaehyeon](https://github.com/kjaehyeon)
@@ -60,13 +61,18 @@
 
 ![home_image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/435948c2-767b-44fa-b35a-d43a8cc5f012/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203239Z&X-Amz-Expires=86400&X-Amz-Signature=ec235e52e9dedfdcf98732aa8cc2a8f4f994448217ba7a4af83b0ce4b9710c69&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
-### **주요 기능**
+### **핵심 기능**
 
 - **강의자료 저장 및 관리**
     - 사용자가 업로드한 강의자료를 저장하고 관리하는 기능입니다.
-    - 학년/학기/과목 별로 구별되어 있어 대학생에게 최적화되어 있습니다.
+    - 학년/학기/과목 별로 구별되어 있어 자료를 효율적으로 관리할 수 있습니다.
 - **퀴즈 생성 & 퀴즈 풀기**
-
+    - 라이브러리
+        - Qestgen.ai : https://github.com/ramsrigouthamg/Questgen.ai
+        - PyPDF2 : https://github.com/mstamy2/PyPDF2
+    - 주요기능
+        - PDF파일형식의 강의자료가 업로드 되면 자동으로 텍스트를 추출하고 Questgen.ai 모듈에 전달하여 퀴즈를 추출 & 생성하여 저장 후, 사용자의 요청이있을 시 전달합니다.
+        - Questgen.ai 모듈은 T5, BERT, GPT-2와 같은 transformer들을 이용하여 학습에 적합한 퀴즈들을 생성하여 효율적인 학습을 가능하게 하는 오픈소스 NLP 라이브러리 입니다.
     ```bash
     **used lib**
     PyPdf2
@@ -74,6 +80,9 @@
     ```
 
 - **오답노트**
+    - 퀴즈를 풀고 틀린 문제가 있다면 자동으로 오답노트에 기록되어 언제든 다시 풀어볼 수 있습니다.
+    - 오답노트를 잘 활용하고 분석한다면 본인의 약점을 충분히 보완할 수 있습니다.
+ 
 - **URL 저장 및 관리**
     - 좌측 Link Keeper 클릭 시 생성 된 폴더를 볼 수 있습니다
     - Link Keeper 우측 폴더 생성 아이콘을 누르면 폴더를 추가 생성할 수 있습니다.
@@ -106,9 +115,6 @@
     - 로그인시에만 업로드&삭제&수정이 가능합니다
     - 로그인 만료 시에는 작업이 불가능합니다.
 
-### Service Description
-
-- 
 
 ## Tech Stack
 
