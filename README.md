@@ -164,10 +164,17 @@
     $ python manage.py migrate
     $ python manage.py runserver
     ```
-
+3.
     - client
 
     ```bash
+    <with yarn>
     $ cd client
-    ```
+    $ yarn add all
+    $ yarn start
+    
+    <with npm>
+    $ cd client
+    $ npm i
+    $ npm start
 
