@@ -9,6 +9,7 @@ import {
   ADD_LECTURE_FOLDER,
   ADD_URL_FILE,
   ADD_URL_FOLDER,
+  DELETE_WRONG_FOLDER,
 } from 'Configs/api';
 
 import {FiLink} from 'react-icons/fi';
@@ -490,17 +491,9 @@ function Nav(props) {
                           }
                         </div>
                         <div>
-                          <>
-                            <RiDeleteBin5Line
-                              className='icon'
-                              onClick={
-                                ()=>
-                                  deleteFolder(LECTURE_MATERIAL, 8, i, folder.id, [4, 2])}
-                            />
-                            <label htmlFor={`lecture-file-${i}`}>
-                              <RiFileUploadLine className='icon'/>
-                            </label>
-                          </>
+                          <label htmlFor={`lecture-file-${i}`}>
+                            <RiFileUploadLine className='icon'/>
+                          </label>
                           <input
                             id={`lecture-file-${i}`}
                             className='file-input'
@@ -545,11 +538,6 @@ function Nav(props) {
                           }
                         </div>
                         <div>
-                          <RiDeleteBin5Line
-                            className='icon'
-                            onClick={
-                              ()=>deleteFolder(LECTURE_MATERIAL, 9, i, folder.id, [4, 2])}
-                          />
                           <label htmlFor={`lecture-file-${i}`}>
                             <RiFileUploadLine className='icon'/>
                           </label>
@@ -607,12 +595,6 @@ function Nav(props) {
                           }
                         </div>
                         <div>
-                          <RiDeleteBin5Line
-                            className='icon'
-                            onClick={
-                              ()=>deleteFolder(LECTURE_MATERIAL, 10, i, folder.id, [5, 2])
-                            }
-                          />
                           <label htmlFor={`lecture-file-${i}`}>
                             <RiFileUploadLine className='icon'/>
                           </label>
@@ -660,12 +642,6 @@ function Nav(props) {
                           }
                         </div>
                         <div>
-                          <RiDeleteBin5Line
-                            className='icon'
-                            onClick={
-                              ()=>deleteFolder(LECTURE_MATERIAL, 11, i, folder.id, [5, 2])
-                            }
-                          />
                           <label htmlFor={`lecture-file-${i}`}>
                             <RiFileUploadLine className='icon'/>
                           </label>
@@ -723,12 +699,6 @@ function Nav(props) {
                           }
                         </div>
                         <div>
-                          <RiDeleteBin5Line
-                            className='icon'
-                            onClick={
-                              ()=>deleteFolder(LECTURE_MATERIAL, 12, i, folder.id, [6, 2])
-                            }
-                          />
                           <label htmlFor={`lecture-file-${i}`}>
                             <RiFileUploadLine className='icon'/>
                           </label>
@@ -775,12 +745,6 @@ function Nav(props) {
                           }
                         </div>
                         <div>
-                          <RiDeleteBin5Line
-                            className='icon'
-                            onClick={
-                              ()=>deleteFolder(LECTURE_MATERIAL, 13, i, folder.id, [6, 2])
-                            }
-                          />
                           <label htmlFor={`lecture-file-${i}`}>
                             <RiFileUploadLine className='icon'/>
                           </label>
@@ -838,12 +802,6 @@ function Nav(props) {
                           }
                         </div>
                         <div>
-                          <RiDeleteBin5Line
-                            className='icon'
-                            onClick={
-                              ()=>deleteFolder(LECTURE_MATERIAL, 14, i, folder.id, [7, 2])
-                            }
-                          />
                           <label htmlFor={`lecture-file-${i}`}>
                             <RiFileUploadLine className='icon'/>
                           </label>
@@ -891,12 +849,6 @@ function Nav(props) {
                           }
                         </div>
                         <div>
-                          <RiDeleteBin5Line
-                            className='icon'
-                            onClick={
-                              ()=>deleteFolder(LECTURE_MATERIAL, 15, i, folder.id, [7, 2])
-                            }
-                          />
                           <label htmlFor={`lecture-file-${i}`}>
                             <RiFileUploadLine className='icon'/>
                           </label>
@@ -941,9 +893,6 @@ function Nav(props) {
                     {
                       folder.name
                     }
-                  </div>
-                  <div>
-                    <RiDeleteBin5Line className='icon'/>
                   </div>
                 </li>
               );
