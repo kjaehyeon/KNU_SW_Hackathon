@@ -169,5 +169,6 @@
 
     ```bash
     $ cd client
-    ```
+    $ yarn add all
+    $ yarn start
 
