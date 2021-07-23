@@ -148,7 +148,7 @@
 1. Clone the repository & change directory
 
     ```bash
-    $ git clone [https://github.com/qkrwoghk15/KNU_SW_hackathon.git](https://github.com/kjaehyeon/KNU_SW_Hackathon.git)
+    $ git clone https://github.com/kjaehyeon/KNU_SW_Hackathon.git
     ```
 
 2. Questgen.ai 모듈 다운로드
@@ -183,10 +183,12 @@
     $ python manage.py createsuperuser -> 계정생성
     $ python manage.py runserver
     ```
-    로컬ip로 접속시
+    (로컬ip로 접속시)
     127.0.0.1:8000/admin 으로 관리자 페이지 접속 후
     grades에 1학년, 2학년, 3학년, 4학년 카테고리 생성
     semester에 1학기, 2학기 카테고리 생성
+    
+    이후 클라이언트 실행
     
 3.
     - client
