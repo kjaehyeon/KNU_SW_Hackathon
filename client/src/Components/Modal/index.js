@@ -1,19 +1,20 @@
 import React from 'react';
+import axios from 'axios';
 import {useState} from 'react';
 import {FcReadingEbook} from 'react-icons/fc';
 import {FcMakeDecision} from 'react-icons/fc';
 import {TiDelete} from 'react-icons/ti';
 import {AiOutlineArrowUp} from 'react-icons/ai';
+import {MAKE_WRONG} from 'Configs/api';
 
 import './style.scss';
-import axios from 'axios';
-import {MAKE_WRONG} from 'Configs/api';
 function Modal(props) {
   const {
     visible,
     setVisible,
     quiz_list,
   } = props;
+
   const subject = window.location.pathname.split('-')[3];
   const [test_state, setTestState] = useState(true);
   const [inputs, setInputs] = useState([]);
@@ -24,8 +25,8 @@ function Modal(props) {
   };
   const clickSubmit = () => {
     quiz_list.forEach((value, index) => {
-      value === inputs[index] ? quiz_list.state = 'o' :
-        quiz_list.state = 'x';
+      value === inputs[index] ? value.state = 'o' :
+        value.state = 'x';
     });
     setTestState(false);
   };
@@ -38,14 +39,12 @@ function Modal(props) {
           'Content-Type': 'application/json',
           'Authorization': `Token ${document.cookie.split('=')[1]}`,
         },
-        method: 'get',
+        method: 'post',
         url: MAKE_WRONG,
-        params: {
-          subject,
-          wrong_list,
-        },
+        data: wrong_list,
       });
-      console.log(response.data);
+      clickClose();
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -94,13 +93,13 @@ function Modal(props) {
                     </div>
                   );
                 }) :
-                quiz_list.map((question) =>
+                quiz_list.map((question, i) =>
                   question.state === 'o' ?
-                    <div className = "o">
-                      {'Q: '}{question.q}<br/>{' A: '}{question.a}
+                    <div key={i} className = "o">
+                      {'Q: '}{question.question}<br/>{' A: '}{question.answer}
                     </div> :
-                    <div className = "x">
-                      {'Q: '}{question.q}<br/>{' A: '}{question.a}
+                    <div key={i} className = "x">
+                      {'Q: '}{question.question}<br/>{' A: '}{question.answer}
                     </div>)
             }
           </div>
