@@ -23,6 +23,7 @@ function Card(props) {
     semester,
     subject,
     file_data,
+    makeModal,
   } = props;
 
   const goLink = () => {
@@ -86,7 +87,12 @@ function Card(props) {
                   className='icon'
                   onClick={download}
                 />
-                <BsQuestionDiamond size='28' title='quiz' className='icon'/>
+                <BsQuestionDiamond
+                  size='28'
+                  title='quiz'
+                  className='icon'
+                  onClick={()=>makeModal(title, grade, semester, subject)}
+                />
               </> :
               <></>
         }

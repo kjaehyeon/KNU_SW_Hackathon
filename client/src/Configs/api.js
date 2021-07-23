@@ -12,4 +12,9 @@ export const GET_URL_FOLDER_LIST = '/urlapp/cliplist/';
 export const GET_LECTURE_FOLDER_LIST = '/lecture/subject/';
 export const GET_URL_FILE_LIST = '/urlapp/clip/';
 export const GET_LECTURE_FILE_LIST = '/lecture/filelist/';
-export const GET_WRONG = '/lecture/wrong/';
+export const GET_WRONG_FOLDER_LIST = '/lecture/wrongsubject/';
+export const GET_WRONG_FILE_LIST = '/lecture/wrong/';
+export const LOGOUT = '/certi/logout';
+export const QUIZ = '/lecture/quiz/';
+export const MAKE_WRONG = '/lecture/wrong';
+

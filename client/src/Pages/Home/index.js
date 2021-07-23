@@ -2,15 +2,20 @@ import React, {useEffect} from 'react';
 import {useState} from 'react';
 import {useHistory} from 'react-router';
 import axios from 'axios';
+import {useCookies} from 'react-cookie';
 
 import Nav from 'Components/Nav';
 import Card from 'Components/Card';
 import Loader from 'react-loader-spinner';
+import Modal from 'Components/Modal';
 import {
   GET_LECTURE_FILE_LIST,
   GET_LECTURE_FOLDER_LIST,
   GET_URL_FILE_LIST, GET_URL_FOLDER_LIST,
-  GET_WRONG,
+  GET_WRONG_FILE_LIST,
+  GET_WRONG_FOLDER_LIST,
+  LOGOUT,
+  QUIZ,
 } from 'Configs/api';
 
 import {FaRegUser} from 'react-icons/fa';
@@ -25,11 +30,56 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [url_folder_list, setUrlFolderList] = useState([]);
   const [lecture_folder_list, setLectureFolderList] = useState([]);
+  const [wrong_folder_list, setWrongFolderList] = useState([]);
   const [file_list, setFileList] = useState([]);
+  const [quiz_list, setQuizList] = useState([]);
+  const [modal_visible, setModalVisible] = useState(false);
+
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
 
   const path = decodeURI(window.location.pathname.slice(1));
   const type = path.split('-')[0];
   const user_id = localStorage.getItem('username');
+
+  const logout = async () => {
+    try {
+      const response = await axios({
+        method: 'post',
+        url: LOGOUT,
+        headers: {
+          'Authorization': `Token ${document.cookie.split('=')[1]}`,
+        },
+      });
+      localStorage.removeItem('username');
+      removeCookie('token');
+      history.push('/');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const makeModal = async (name, semester, grade, subject) => {
+    try {
+      const response = await axios({
+        method: 'get',
+        url: QUIZ,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${document.cookie.split('=')[1]}`,
+        },
+        params: {
+          name,
+          semester: Number(semester),
+          grade: Number(grade),
+          subject: Number(subject),
+        },
+      });
+      setQuizList(response.data);
+      setModalVisible(true);
+    } catch (err) {
+      console.log(err);
+    };
+  };
 
   useEffect(async ()=>{
     setLoading(true);
@@ -80,7 +130,7 @@ function Home() {
             'Authorization': `Token ${document.cookie.split('=')[1]}`,
           },
           method: 'get',
-          url: GET_WRONG,
+          url: GET_WRONG_FILE_LIST,
           params: {
             subject,
           },
@@ -117,6 +167,34 @@ function Home() {
     } catch (err) {
       console.log(err);
     }
+
+    try {
+      const response = await axios({
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${document.cookie.split('=')[1]}`,
+        },
+        method: 'get',
+        url: GET_LECTURE_FOLDER_LIST,
+      });
+      setLectureFolderList(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+
+    try {
+      const response = await axios({
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${document.cookie.split('=')[1]}`,
+        },
+        method: 'get',
+        url: GET_WRONG_FOLDER_LIST,
+      });
+      setWrongFolderList(response.data);
+    } catch (err) {
+      console.log(err);
+    }
     setLoading(false);
   }, [path]);
 
@@ -126,6 +204,11 @@ function Home() {
 
   return (
     <div className='home__container'>
+      <Modal
+        visible={modal_visible}
+        setVisible={setModalVisible}
+        quiz_list={quiz_list}
+      />
       <div className='aside'>
         <div className='wrapper'>
           <div
@@ -139,6 +222,7 @@ function Home() {
             setUrlFolderList={setUrlFolderList}
             lecture_folder_list={lecture_folder_list}
             setLectureFolderList={setLectureFolderList}
+            wrong_folder_list={wrong_folder_list}
             setLoading={setLoading}
           />
         </div>
@@ -147,7 +231,7 @@ function Home() {
         <div className='user'>
           <FaRegUser className='icon'/>
           <span className='user-id'>{user_id}</span>님
-          <div className='logout'>
+          <div className='logout' onClick={logout}>
             <FiLogOut className='icon'/>
             로그아웃
           </div>
@@ -196,6 +280,7 @@ function Home() {
                         semester={semester}
                         subject={subject}
                         file_data={file_data}
+                        makeModal={makeModal}
                         id={id}
                       />
                     );
@@ -212,7 +297,7 @@ function Home() {
                         summary={answer}
                       />
                     );
-                  }
+                  } return <></>;
                 }) :
                 <div className='not'>
                   <img width='300px' height='300px' src={query} alt='img'/>

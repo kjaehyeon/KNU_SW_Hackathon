@@ -28,11 +28,11 @@ function Nav(props) {
     setUrlFolderList,
     lecture_folder_list,
     setLectureFolderList,
+    wrong_folder_list,
     setLoading,
   } = props;
 
   const [folder_state, setFolderState] = useState([]);
-  const [wrong_folder_list, setWrongFolderList] = useState(List([]));
   const history = useHistory();
 
   const ADD = 1;
@@ -930,33 +930,26 @@ function Nav(props) {
           </div>
         </li>
         <ul id={`pair-${WRONG_NOTE}`} className='items-wrapper'>
-          <li className='wrapper'>
-            <div className='items'>&nbsp;&nbsp;&nbsp;
-              <FcFolder className='icon'/>
-              공학수학
-            </div>
-            <div>
-              <BsChevronDown className='icon'/>
-            </div>
-          </li>
-          <li className='wrapper'>
-            <div className='items'>&nbsp;&nbsp;&nbsp;
-              <FcFolder className='icon'/>
-              자료구조
-            </div>
-            <div>
-              <BsChevronDown className='icon'/>
-            </div>
-          </li>
-          <li className='wrapper'>
-            <div className='items'>&nbsp;&nbsp;&nbsp;
-              <FcFolder className='icon'/>
-              선형대수
-            </div>
-            <div>
-              <BsChevronDown className='icon'/>
-            </div>
-          </li>
+          {
+            wrong_folder_list.map((folder, i)=>{
+              return (
+                <li key={i} className='wrapper'>
+                  <div className='items file' onClick={() => {
+                    showFiles(`wrong-${folder.name}`);
+                  }}>&nbsp;&nbsp;&nbsp;
+                    <FcFolder className='icon'/>
+                    {
+                      folder.name
+                    }
+                  </div>
+                  <div>
+                    <RiDeleteBin5Line className='icon'/>
+                    <RiFileUploadLine className='icon'/>
+                  </div>
+                </li>
+              );
+            })
+          }
         </ul>
       </ul>
     </div>
