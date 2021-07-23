@@ -10,13 +10,7 @@ from django.dispatch import receiver
 import os
 import metadata_parser
 from io import BytesIO
-<<<<<<< HEAD
-=======
-import magic
->>>>>>> ca8985939910ba98f630de6b9cfe5b718b3fb554
 import requests
-from django.core.files import File
-from urllib.parse import urlparse
 # Create your views here.
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """
@@ -39,13 +33,14 @@ class FolderViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         return Folder.objects.filter(user = user)
+
     @action(detail=False)
+    def perform_create(self, serializer):
+        serializer.save(
+            user=self.request.user, 
+        )
+
     def folderlist(self, request):
-<<<<<<< HEAD
-=======
-        #fo = self.get_object()
-        #print(fo.user)
->>>>>>> ca8985939910ba98f630de6b9cfe5b718b3fb554
         user = self.request.user
         folderList = Folder.objects.filter(user = user)
         page = self.paginate_queryset(folderList)
@@ -57,50 +52,44 @@ class FolderViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-<<<<<<< HEAD
-=======
-# url로부터 파일을 임시 다운로드
-def download(url):
-    response = requests.get(url)
-    binary_data = response.content
-    temp_file = BytesIO()
-    temp_file.write(binary_data)
-    temp_file.seek(0)
-    return temp_file
-
-# 파일 확장자 추출
-def get_buffer_ext(buffer):
-    buffer.seek(0)
-    mime_info = magic.from_buffer(buffer.read(), mime=True)
-    buffer.seek(0)
-    return mime_info.split('/')[-1]
->>>>>>> ca8985939910ba98f630de6b9cfe5b718b3fb554
 
 class UrlViewSet(viewsets.ModelViewSet):
-    #queryset = Url.objects.all()
     serializer_class = UrlSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     def get_queryset(self):
         user = self.request.user
-        folder = self.request.GET['name']
-        print(folder)
-        return Url.objects.filter(user__username = user, folder__name = folder)    
+        if self.request.method == "GET":
+            folder = self.request.GET['name']
+            print(folder)
+            return Url.objects.filter(user__username = user, folder__name = folder)
+        return Url.objects.filter(user__username = user)
     def perform_create(self, serializer):
         print(self.request.data["link"])
         page = metadata_parser.MetadataParser(self.request.data["link"])
+        title=page.get_metadatas("title", strategy=['og'])
+        if title is None:
+            title=page.get_metadatas("title")[0]
+            body="링크를 보려면 클릭하세요."
+            image_url = "https://image.flaticon.com/icons/png/512/1160/1160157.png"
+        else:
+            title=page.get_metadatas("title", strategy=['og'])[0]
+            body=page.get_metadatas("description", strategy=['og'])
+            if body is None:
+                body="링크를 보려면 클릭하세요."
+            else:
+                body=page.get_metadatas("description", strategy=['og'])[0]
+                image_url=page.get_metadatas("image", strategy=['og'])
+                if image_url is None:
+                    image_url = "https://lh3.googleusercontent.com/proxy/R0OM0af78z7D8R7Oms5PkTGVq96Rmm1HAtT4THD0b4wLZ5co2cIQEnXiTLwd3lgV-xKlTEvuK94gBrskRDiOOnIwfsune4X0p1Otiy6KvWQBOK3vOpzuy6KlAJSAsrY"
+                else:
+                    image_url=page.get_metadatas("image", strategy=['og'])[0]
         serializer.save(
             user=self.request.user, 
-            title=page.get_metadatas("title", strategy=['og'])[0],
-            body=page.get_metadatas("description", strategy=['og'])[0],
-            image_url=page.get_metadatas("image", strategy=['og'])[0],
+            title=title,
+            body=body,
+            image_url=image_url,
         )
     def get(self, request, *args, **kwargs):
-<<<<<<< HEAD
         return self.list(request, *args, **kwargs)
-=======
-        return self.list(request, *args, **kwargs)
-# @api_view(['GET']) # 해당 함수 view에서 처리할 http 메소드
-# def ClipAPI(request):
-#     #user = 
-#     return Response("hello world!") # http response 형태로 return
->>>>>>> ca8985939910ba98f630de6b9cfe5b718b3fb554
+
+

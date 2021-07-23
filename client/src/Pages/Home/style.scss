@@ -1,0 +1,74 @@
+@import 'Configs/colors.scss';
+
+.home__container{
+    display: flex;
+
+    .aside{
+        flex: 1;
+        background: #607d8b;
+        padding: 50px 10px;
+        min-height: 100vh;
+
+        .wrapper{
+            color: #fff;
+            font-weight: 600;
+
+            .logo{
+                font-size: 36px;
+                margin-bottom: 50px;
+                margin-left: 10px;
+
+                .icon{
+                    position: relative;
+                    top: 6px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    .body{
+        flex: 4;
+        padding: 10px 40px;
+        background: #eeeeee;
+
+        .user {
+            display: flex;
+            height: 100px;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 26px;
+            margin-bottom: 30px;
+
+            .user-id{
+                color: $POINT_COLOR;
+            }
+
+            .icon{
+                margin-right: 10px;
+
+            }
+
+            .logout {
+                margin-left: 30px;
+                transition: 0.3s;
+                cursor: pointer;
+
+                .icon {
+                    position: relative;
+                    top: 3px;
+                }
+
+                &:hover {
+                    color: $POINT_COLOR;
+                }
+            }
+        }
+
+        .main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

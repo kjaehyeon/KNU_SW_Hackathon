@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import LectureFile, Grade, Semester, Subject, GeneratedQuestion, WrongQuestion
+from .models import LectureFile, Grade, Semester, Subject, GeneratedQuestion, WrongQuestion, WrongSubject
 
 class GradeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,3 +50,10 @@ class WrongQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = WrongQuestion
         fields = ['id', 'subject', 'owner', 'question', 'answer']
+
+class WrongSubjectSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = WrongSubject
+        fields = ['name', 'owner']

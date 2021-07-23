@@ -1,0 +1,49 @@
+@import 'Configs/colors.scss';
+
+.card{
+    width: 70%;
+    height: 220px;
+    margin-bottom: 50px;
+    padding: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: transform 0.3s;
+    background: $WHITE;
+
+    &:hover{
+        transform: translate(20px, -20px);
+    }
+    .header{
+        display: flex;
+        justify-content: flex-end;
+
+        .icon{
+            margin-left: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover{
+                fill: $POINT_COLOR;
+            }
+        }
+    }
+
+    .content-wrapper{
+        display: flex;
+
+        .content{
+            margin-left: 20px;
+            
+            .title{
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+
+            .summary{
+                line-height: 1.2;
+            }
+        }
+    }
+
+
+}

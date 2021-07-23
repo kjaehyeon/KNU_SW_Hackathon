@@ -9,6 +9,7 @@ urlpatterns =[
     path('subject/', views.SubjectList.as_view()),
     path('quiz/', views.QuizList.as_view()),
     path('wrong/', views.WrongList.as_view()),
+    path('wrongsubject/', views.WrongSubjectList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

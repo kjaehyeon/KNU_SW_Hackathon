@@ -1,4 +1,4 @@
-from .serializers import LectureFileSerializer, SubjectSerializer, GeneratedQuestionSerializer, WrongQuestionSerializer
+from .serializers import LectureFileSerializer, SubjectSerializer, GeneratedQuestionSerializer, WrongQuestionSerializer, WrongSubjectSerializer
 from django.contrib.auth.models import User
 from .models import LectureFile, Grade, Semester, Subject, GeneratedQuestion, WrongQuestion, get_valid_filename, WrongSubject
 from rest_framework.views import APIView
@@ -130,8 +130,11 @@ class WrongList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Generic
 
         serializer = self.get_serializer(data=request.data, many=is_many)
         subject = Subject.objects.get(pk=request.data[0]["subject"])
+        
         if not WrongSubject.objects.filter(name=subject.name, owner=self.request.user):
             wrong=WrongSubject.objects.create(name=subject.name, owner=self.request.user)
+        else:
+            wrong= WrongSubject.objects.get(name=subject.name, owner=self.request.user)
 
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer,wrong)
@@ -144,4 +147,14 @@ class WrongList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Generic
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
+
+class WrongSubjectList(mixins.ListModelMixin, mixins.DestroyModelMixin,generics.GenericAPIView):
+    serializer_class=WrongSubjectSerializer
+
+    def get_queryset(self):
+        return WrongSubject.objects.filter(owner=self.request.user)
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
 

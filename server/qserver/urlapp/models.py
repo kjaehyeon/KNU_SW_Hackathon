@@ -7,13 +7,10 @@ from django.core.files import File
 
 # Create your models here.
 class Folder(models.Model):
-    user = models.ForeignKey(User, related_name='folders', on_delete=models.CASCADE, blank=False)
+    user = models.ForeignKey(User, related_name='folders', on_delete=models.CASCADE, blank=False, null=True)
     name = models.CharField(max_length=200)
     def __str__(self):
         return f'[{self.pk}]{self.name}'
-
-def get_file_path(instance, filename):
-    return '/'.join([instance.user.username, "URLAPP", instance.folder.name, instance.title, filename])
 
 class Url(models.Model):
     link = models.URLField()
