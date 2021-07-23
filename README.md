@@ -164,4 +164,4 @@
     ```bash
     $ cd client
     ```
-##[API 명세서](https://www.notion.so/API-08fe6e9aa2714e8085eb016c09e0db73)
+## [API 명세서](https://www.notion.so/API-08fe6e9aa2714e8085eb016c09e0db73)
