@@ -5,9 +5,6 @@ from rest_framework.decorators import action
 from rest_framework import permissions
 from .models import Url, Folder
 from .serializers import FolderSerializer, UrlSerializer
-from django.db import models
-from django.dispatch import receiver
-import os
 import metadata_parser
 from io import BytesIO
 import requests
@@ -28,7 +25,6 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         return obj.user == request.user
 
 class FolderViewSet(viewsets.ModelViewSet):
-    #queryset = Folder.objects.all()
     serializer_class = FolderSerializer
     def get_queryset(self):
         user = self.request.user
@@ -39,7 +35,6 @@ class FolderViewSet(viewsets.ModelViewSet):
         serializer.save(
             user=self.request.user, 
         )
-
     def folderlist(self, request):
         user = self.request.user
         folderList = Folder.objects.filter(user = user)

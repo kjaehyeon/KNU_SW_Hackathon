@@ -1,11 +1,11 @@
-/*eslint-disable*/
 import React from 'react';
+import axios from 'axios';
+import useInput from 'utils/useInput';
+
 import {AiFillLock} from 'react-icons/ai';
 import {FcLock} from 'react-icons/fc';
 import {FaQuestion} from 'react-icons/fa';
 import {useHistory} from 'react-router-dom';
-import useInput from 'utils/useInput';
-import axios from 'axios';
 import {SIGNIN} from 'Configs/api';
 import {useCookies} from 'react-cookie';
 
@@ -28,34 +28,34 @@ const Signin = () => {
   const signin = async (e) => {
     e.preventDefault();
 
-    try{
-    const response = await axios({
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'post',
-      url: SIGNIN,
-      data: {
-        username: id,
-        password
-      },
-    });
-    const {data: {token}} = response;
-    const {data: {user: {username}}} = response;
-    if (token) {
-      const expires = new Date();
-      expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 14);
+    try {
+      const response = await axios({
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'post',
+        url: SIGNIN,
+        data: {
+          username: id,
+          password,
+        },
+      });
+      const {data: {token}} = response;
+      const {data: {user: {username}}} = response;
+      if (token) {
+        const expires = new Date();
+        expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 14);
 
-      setCookie('token', token, {path: '/', expires});
+        setCookie('token', token, {path: '/', expires});
 
-      if (username) {
-        localStorage.setItem('username', username);
+        if (username) {
+          localStorage.setItem('username', username);
+        }
       }
-    }
 
-    history.push('/main');
-    } catch(err){
-      alert('로그인 실패')
+      history.push('/main');
+    } catch (err) {
+      alert('로그인 실패');
     }
   };
 

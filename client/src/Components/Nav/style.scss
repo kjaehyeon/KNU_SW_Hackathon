@@ -1,15 +1,16 @@
 @import 'Configs/colors.scss';
 
 .nav{
-  font-size: 17px;
+  font-size: 1.5rem;
   font-weight: 600;
   .root{
+    padding-bottom: 10PX;
+    
     .wrapper{
       display: flex;
       justify-content: space-between;
       align-items: center;
       transition: background-color 0.4s;
-      height: 30px;
       
       &:hover{
         background: $POINT_COLOR;
@@ -35,7 +36,7 @@
       .items{
         display: flex;
         align-items: center;
-        height: 30px;
+        height: 40px;
       }
     }
   }

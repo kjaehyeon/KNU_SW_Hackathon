@@ -1,11 +1,9 @@
-/*eslint-disable*/
 import React from 'react';
 import axios from 'axios';
 import useInput from 'utils/useInput';
-import { REGISTER } from 'Configs/api';
+import {REGISTER} from 'Configs/api';
 import {FcCollaboration} from 'react-icons/fc';
-import { useCookies } from "react-cookie";
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 import './style.scss';
 const Register = () => {
@@ -19,30 +17,30 @@ const Register = () => {
   const {
     id,
     email,
-    password
+    password,
   } = input;
 
   const register = async (e) => {
     e.preventDefault();
-    try{
-    await axios({
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'post',
-      url: REGISTER,
-      data: {
-        username: id,
-        email,
-        password
-      },
-    });
+    try {
+      await axios({
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'post',
+        url: REGISTER,
+        data: {
+          username: id,
+          email,
+          password,
+        },
+      });
 
-    history.push('/');
-    }catch(err){
+      history.push('/');
+    } catch (err) {
       alert('회원가입 실패');
     }
-  }
+  };
 
   return (
     <div className="Register">
@@ -68,7 +66,7 @@ const Register = () => {
               type="password"
               name='password'
               placeholder = "비밀번호를 입력 하세요"
-              value={password} 
+              value={password}
               onChange={handleInput}
             />
             <button type='submit'>Sign up</button>

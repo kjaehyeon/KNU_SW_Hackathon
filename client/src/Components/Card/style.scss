@@ -6,6 +6,7 @@
     margin-bottom: 50px;
     padding: 30px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
     transition: transform 0.3s;
     background: $WHITE;
 
@@ -30,6 +31,10 @@
     .content-wrapper{
         display: flex;
 
+        .icon{
+            width: 180px;
+            height: 180px;
+        }
         .content{
             margin-left: 20px;
             
