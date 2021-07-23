@@ -151,7 +151,25 @@
     $ git clone [https://github.com/qkrwoghk15/KNU_SW_hackathon.git](https://github.com/kjaehyeon/KNU_SW_Hackathon.git)
     ```
 
-2. 
+2. Questgen.ai 모듈 다운로드
+
+    ```
+    pip install git+https://github.com/ramsrigouthamg/Questgen.ai
+    //위의 명령어로 설치 실패 시 다운로드 후 setup.py에 버젼 변경필요 -> spacy==3.1.1  sense2vec==2.0.0 로 버전 변경 후 가상환경 내에서 Questgen.ai 폴더로 이동 후  pip install .
+    //pip list로 확인했을 때 Questgen 모듈이 설치 되어있으면 성공
+    pip install git+https://github.com/boudinfl/pke.git
+    python -m nltk.downloader universal_tagset
+    python -m spacy download en
+    ```
+    https://github.com/explosion/sense2vec/releases/download/v1.0.0/s2v_reddit_2015_md.tar.gz
+    위의 링크로 다운받은 s2v_reddit_2015_md.tar.gz 파일을 압축해제 후 server > qserver 에 s2v_old 폴더를 위치시킨다.
+    
+    ```
+    pip insatll PyPDF2
+    -> PDF를 text로 변환하는 라이브러리
+    ```
+
+2-1. 
     - server
 
     ```bash
@@ -162,8 +180,14 @@
     $ cd qserver
     $ python manage.py makemigrations
     $ python manage.py migrate
+    $ python manage.py createsuperuser -> 계정생성
     $ python manage.py runserver
     ```
+    로컬ip로 접속시
+    127.0.0.1:8000/admin 으로 관리자 페이지 접속 후
+    grades에 1학년, 2학년, 3학년, 4학년 카테고리 생성
+    semester에 1학기, 2학기 카테고리 생성
+    
 3.
     - client
 
