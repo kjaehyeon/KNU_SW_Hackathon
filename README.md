@@ -168,7 +168,13 @@
     - client
 
     ```bash
+    <with yarn>
     $ cd client
     $ yarn add all
     $ yarn start
+    
+    <with npm>
+    $ cd client
+    $ npm i
+    $ npm start
 
