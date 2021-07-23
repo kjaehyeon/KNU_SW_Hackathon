@@ -21,7 +21,7 @@
 ## :muscle: Team Name : Queen's Gambit & 팀원
 
 
-- **프론트엔드 (React)**
+- **프론트엔드 (React)** {: flaot=left}
     - 강준구 (경북대학교 컴퓨터학부)
 
         Github : [https://github.com/Jungu12](https://github.com/Jungu12)
@@ -35,8 +35,8 @@
         학번 : 2017114482
 
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/86a672de-ce28-4407-921a-5c26e2ed905f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203122Z&X-Amz-Expires=86400&X-Amz-Signature=b553e4c7cdf0a62b1a32373be2c902c34dfdea057384e36761ee3db1cdd6d2b3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="100" float="right">
-- **백엔드 (Django Rest Framework)**
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/86a672de-ce28-4407-921a-5c26e2ed905f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203122Z&X-Amz-Expires=86400&X-Amz-Signature=b553e4c7cdf0a62b1a32373be2c902c34dfdea057384e36761ee3db1cdd6d2b3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="400" float="right">
+- **백엔드 (Django Rest Framework)** {: flaot=left}
     - 김재현 (경북대학교 컴퓨터학부)
 
         Github : [https://github.com/kjaehyeon](https://github.com/kjaehyeon)
@@ -50,7 +50,7 @@
         학번 : 2017112351
 
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/31fe5281-ffa7-4c38-9d4d-0452743f9f0d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203153Z&X-Amz-Expires=86400&X-Amz-Signature=3394cb689b352ad171d39fe1d78aa87914b700f27a881918f6c6c5187207654f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="100" float="right">
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/31fe5281-ffa7-4c38-9d4d-0452743f9f0d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203153Z&X-Amz-Expires=86400&X-Amz-Signature=3394cb689b352ad171d39fe1d78aa87914b700f27a881918f6c6c5187207654f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="400" float="right">
 
 ##  :fire: 서비스 Description
 
