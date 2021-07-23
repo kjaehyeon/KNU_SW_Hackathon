@@ -1,19 +1,18 @@
-/*eslint-disable*/
-import { routes } from 'Configs/routes';
+import {routes} from 'Configs/routes';
 import Auth from 'Hoc';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import './App.scss';
 
-function RouteManager(){
-  return(
+function RouteManager() {
+  return (
     <Router>
       <Switch>
         {
           routes.map((route, i) => {
             const {path, component, exact} = route;
             let option = false;
-            if(path === '/:file'){
+            if (path === '/:file') {
               option = true;
             }
             return (

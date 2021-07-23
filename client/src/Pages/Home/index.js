@@ -1,13 +1,17 @@
-/*eslint-disable*/
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useHistory } from 'react-router';
+import React, {useEffect} from 'react';
+import {useState} from 'react';
+import {useHistory} from 'react-router';
 import axios from 'axios';
 
 import Nav from 'Components/Nav';
 import Card from 'Components/Card';
-import Loader from "react-loader-spinner";
-import {GET_LECTURE_FILE_LIST, GET_LECTURE_FOLDER_LIST, GET_URL_FILE_LIST, GET_URL_FOLDER_LIST } from 'Configs/api';
+import Loader from 'react-loader-spinner';
+import {
+  GET_LECTURE_FILE_LIST,
+  GET_LECTURE_FOLDER_LIST,
+  GET_URL_FILE_LIST, GET_URL_FOLDER_LIST,
+  GET_WRONG,
+} from 'Configs/api';
 
 import {FaRegUser} from 'react-icons/fa';
 import {FiLogOut} from 'react-icons/fi';
@@ -23,84 +27,102 @@ function Home() {
   const [lecture_folder_list, setLectureFolderList] = useState([]);
   const [file_list, setFileList] = useState([]);
 
-  const path = decodeURI(location.pathname.slice(1));
+  const path = decodeURI(window.location.pathname.slice(1));
   const type = path.split('-')[0];
-  const user_id = localStorage.getItem('username'); 
+  const user_id = localStorage.getItem('username');
 
-  useEffect (async ()=>{
+  useEffect(async ()=>{
     setLoading(true);
-    if(type === 'url'){
+    if (type === 'url') {
       const name = path.split('-')[1];
-      try{
-      const response = await axios({
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${document.cookie.split('=')[1]}`
-        },
-        method: 'get',
-        url: GET_URL_FILE_LIST,
-        params: {
-          name
-        }
-      })
-      setFileList(response.data);
-      }catch(err){
+      try {
+        const response = await axios({
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${document.cookie.split('=')[1]}`,
+          },
+          method: 'get',
+          url: GET_URL_FILE_LIST,
+          params: {
+            name,
+          },
+        });
+        setFileList(response.data);
+      } catch (err) {
         console.log(err);
       }
-    } else if(type === 'lecture'){
+    } else if (type === 'lecture') {
       try {
-      const [grade, semester, subject] = path.split('-').slice(1);
-      const response = await axios({
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${document.cookie.split('=')[1]}`
-        },
-        method: 'get',
-        url: GET_LECTURE_FILE_LIST,
-        params: {
-          grade: `${grade}학년`,
-          semester: `${semester}학기`,
-          subject,
-        }
-      });
-      setFileList(response.data);
-      } catch(err){
+        const [grade, semester, subject] = path.split('-').slice(1);
+        const response = await axios({
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${document.cookie.split('=')[1]}`,
+          },
+          method: 'get',
+          url: GET_LECTURE_FILE_LIST,
+          params: {
+            grade: `${grade}학년`,
+            semester: `${semester}학기`,
+            subject,
+          },
+        });
+        setFileList(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    } else if (type === 'wrong') {
+      try {
+        const subject = path.split('-')[1];
+        const response = await axios({
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${document.cookie.split('=')[1]}`,
+          },
+          method: 'get',
+          url: GET_WRONG,
+          params: {
+            subject,
+          },
+        });
+        setFileList(response.data);
+      } catch (err) {
         console.log(err);
       }
     }
-    try{
+    try {
       const response = await axios({
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Token ${document.cookie.split('=')[1]}`
+          'Authorization': `Token ${document.cookie.split('=')[1]}`,
         },
         method: 'get',
         url: GET_URL_FOLDER_LIST,
       });
       setUrlFolderList(response.data);
-    } catch(err){
+    } catch (err) {
       console.log(err);
     }
 
-    try{
+    try {
       const response = await axios({
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Token ${document.cookie.split('=')[1]}`
+          'Authorization': `Token ${document.cookie.split('=')[1]}`,
         },
         method: 'get',
         url: GET_LECTURE_FOLDER_LIST,
       });
-        setLectureFolderList(response.data);    
-    } catch(err){
-      console.log(err)
+      setLectureFolderList(response.data);
+    } catch (err) {
+      console.log(err);
     }
     setLoading(false);
   }, [path]);
 
   const goHome = () => {
     history.push('/main');
-  }
+  };
 
   return (
     <div className='home__container'>
@@ -110,7 +132,7 @@ function Home() {
             className='logo'
             onClick={goHome}
           >
-            <img width='100%' height='30%' src={src}/>
+            <img width='100%' height='30%' src={src} alt='img'/>
           </div>
           <Nav
             url_folder_list={url_folder_list}
@@ -132,55 +154,69 @@ function Home() {
         </div>
         <div className='main'>
           {
-            loading ? <div className='loader'><Loader type='Bars' color='#607d8b'/></div> :  
-            file_list.length > 0 ?
-            file_list.map((file, i)=>{
-              if(type === 'url'){
-                const {
-                  title,
-                  body,
-                  image_url,
-                  link,
-                  id
-                } = file;
-                return (
-                <Card
-                  key={i}
-                  type={type}
-                  title={title}
-                  summary={body}
-                  img={image_url}
-                  link={link}
-                  id={id}
-                />
-                );
-              } else if(type === 'lecture') {
-                const {
-                  name,
-                  id,
-                  grade,
-                  semester,
-                  subject,
-                  file_data
-                } = file
-                
-                return (
-                  <Card
-                    key={i}
-                    title={name}
-                    grade={grade}
-                    type={type}
-                    semester={semester}
-                    subject={subject}
-                    file_data={file_data}
-                    id={id}
-                  />
-                )
-              }
-            }) : 
-            <div className='not'>
-              <img width='300px' height='300px' src={query}/>
-            </div>
+            loading ?
+              <div className='loader'><Loader type='Bars' color='#607d8b'/></div> :
+              file_list.length > 0 ?
+                file_list.map((file, i)=>{
+                  if (type === 'url') {
+                    const {
+                      title,
+                      body,
+                      image_url,
+                      link,
+                      id,
+                    } = file;
+                    return (
+                      <Card
+                        key={i}
+                        type={type}
+                        title={title}
+                        summary={body}
+                        img={image_url}
+                        link={link}
+                        id={id}
+                      />
+                    );
+                  } else if (type === 'lecture') {
+                    const {
+                      name,
+                      id,
+                      grade,
+                      semester,
+                      subject,
+                      file_data,
+                    } = file;
+
+                    return (
+                      <Card
+                        key={i}
+                        title={name}
+                        grade={grade}
+                        type={type}
+                        semester={semester}
+                        subject={subject}
+                        file_data={file_data}
+                        id={id}
+                      />
+                    );
+                  } else if (type === 'wrong') {
+                    const {
+                      question,
+                      answer,
+                    } = file;
+
+                    return (
+                      <Card
+                        key={i}
+                        title={question}
+                        summary={answer}
+                      />
+                    );
+                  }
+                }) :
+                <div className='not'>
+                  <img width='300px' height='300px' src={query} alt='img'/>
+                </div>
           }
         </div>
       </div>

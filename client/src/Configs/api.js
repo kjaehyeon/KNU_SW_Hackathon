@@ -12,3 +12,4 @@ export const GET_URL_FOLDER_LIST = '/urlapp/cliplist/';
 export const GET_LECTURE_FOLDER_LIST = '/lecture/subject/';
 export const GET_URL_FILE_LIST = '/urlapp/clip/';
 export const GET_LECTURE_FILE_LIST = '/lecture/filelist/';
+export const GET_WRONG = '/lecture/wrong/';
