@@ -944,7 +944,6 @@ function Nav(props) {
                   </div>
                   <div>
                     <RiDeleteBin5Line className='icon'/>
-                    <RiFileUploadLine className='icon'/>
                   </div>
                 </li>
               );
