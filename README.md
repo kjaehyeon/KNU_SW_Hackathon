@@ -156,12 +156,13 @@
     ```
     pip install git+https://github.com/ramsrigouthamg/Questgen.ai
     //위의 명령어로 설치 실패 시 다운로드 후 setup.py에 버젼 변경필요 -> spacy==3.1.1  sense2vec==2.0.0 로 버전 변경 후 가상환경 내에서 Questgen.ai 폴더로 이동 후  pip install .
+    //pip list로 확인했을 때 Questgen 모듈이 설치 되어있으면 성공
     pip install git+https://github.com/boudinfl/pke.git
     python -m nltk.downloader universal_tagset
     python -m spacy download en
     ```
     https://github.com/explosion/sense2vec/releases/download/v1.0.0/s2v_reddit_2015_md.tar.gz
-    위의 링크로 다운받은 s2v_reddit_2015_md.tar.gz 파일을 압축해제 후 server > qserver 에 s2v_old 폴더 위치시킴
+    위의 링크로 다운받은 s2v_reddit_2015_md.tar.gz 파일을 압축해제 후 server > qserver 에 s2v_old 폴더를 위치시킨다.
     
     ```
     pip insatll PyPDF2
