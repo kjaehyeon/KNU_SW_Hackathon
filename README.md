@@ -174,7 +174,7 @@
     위의 링크로 다운받은 s2v_reddit_2015_md.tar.gz 파일을 압축해제 후 server > qserver 에 s2v_old 폴더를 위치시킨다.
     
     ```
-    pip insatll PyPDF2
+    pip install PyPDF2
     -> PDF를 text로 변환하는 라이브러리
     ```
 
