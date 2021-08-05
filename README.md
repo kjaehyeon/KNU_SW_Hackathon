@@ -10,7 +10,7 @@
 ##  :bulb: 주제
 
 
-- **서비스 한 줄 요약 : 대학생을 위한 Personal Library & QUIZ MAKEING 서비스**
+- **서비스 한 줄 요약 : 대학생을 위한 Personal Library & QUIZ MAKING 서비스**
 - **Slogan : Ask yourself!**
 - 문제점 및 개발배경
     1. 코로나로 인한 비대면 강의로 학습의 떨어지는 학습의 효율성을 보조하기 위한 Tool의 필요성이 큽니다.
