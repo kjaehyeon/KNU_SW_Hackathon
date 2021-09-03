@@ -23,7 +23,7 @@
 
 ## :muscle: Team Name : Queen's Gambit & 팀원
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/86a672de-ce28-4407-921a-5c26e2ed905f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203122Z&X-Amz-Expires=86400&X-Amz-Signature=b553e4c7cdf0a62b1a32373be2c902c34dfdea057384e36761ee3db1cdd6d2b3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="400">
+![react](https://user-images.githubusercontent.com/33208296/131961870-ff628ada-83b2-4328-b6eb-19d0a81bbd16.JPG)
 
 - **프론트엔드 (React)**
     - 강준구 (경북대학교 컴퓨터학부)
@@ -37,9 +37,8 @@
         Github : [https://github.com/nhj2927](https://github.com/nhj2927)
 
         학번 : 2017114482
-
-
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/31fe5281-ffa7-4c38-9d4d-0452743f9f0d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203153Z&X-Amz-Expires=86400&X-Amz-Signature=3394cb689b352ad171d39fe1d78aa87914b700f27a881918f6c6c5187207654f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="400">
+        
+![drf](https://user-images.githubusercontent.com/33208296/131961923-b098a24b-b8e9-45e5-9472-dc804d7791e3.JPG)
 
 - **백엔드 (Django Rest Framework)** 
     
