@@ -23,7 +23,7 @@
 
 ## :muscle: Team Name : Queen's Gambit & 팀원
 
-![react](https://user-images.githubusercontent.com/33208296/131961870-ff628ada-83b2-4328-b6eb-19d0a81bbd16.JPG)
+![react](https://user-images.githubusercontent.com/33208296/131962068-4106bbe0-b66e-4bb0-a531-82ab052224a5.JPG)
 
 - **프론트엔드 (React)**
     - 강준구 (경북대학교 컴퓨터학부)
@@ -38,7 +38,7 @@
 
         학번 : 2017114482
         
-![drf](https://user-images.githubusercontent.com/33208296/131961923-b098a24b-b8e9-45e5-9472-dc804d7791e3.JPG)
+![drf](https://user-images.githubusercontent.com/33208296/131962112-1a5b2a88-2e6f-4f7a-85aa-b10538dff732.JPG)
 
 - **백엔드 (Django Rest Framework)** 
     
