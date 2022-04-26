@@ -2,7 +2,7 @@
 
 ---
 
-![logo](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ad267fd9-e53d-49e8-893d-9b8fdd02b499/Untitled.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210722%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210722T203055Z&X-Amz-Expires=86400&X-Amz-Signature=a892073330e564e4b887b455ebb59166a4599935bc6a09b3fad32b78d509cbed&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.jpeg%22)
+![image](https://user-images.githubusercontent.com/33050476/165401279-dc1522cd-1bda-47bc-b590-31cac143d410.png)
 
 ## 시연영상 https://youtu.be/dJRQMDFk7bk
 
